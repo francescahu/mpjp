@@ -21,6 +21,27 @@ class S02Test {
 
         assertThat(actual, is(Double.POSITIVE_INFINITY));
     }
+    
+    @Test
+    void speedZeroDistance() {
+        double actual = S02.speed(0, 10);
+
+        assertThat(actual, is(0.0));
+    }
+    
+    @Test
+    void speedNegativeDistance() {
+        double actual = S02.speed(-100, 9.58);
+
+        assertThat(actual, closeTo(-10.438, 0.001));
+    }
+    
+    @Test
+    void speedNegativeTime() { //corsa all'indietro
+        double actual = S02.speed(100, -9.58);
+
+        assertThat(actual, is(0.0));
+    }
 
     @Test
     void distanceSquareTwo() {
