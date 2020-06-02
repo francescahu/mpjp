@@ -5,7 +5,7 @@ public class MethodCaller {
         System.out.println(Simple.h());
         
         Simple reference = new Simple();
-        
+
         int result = reference.f(7, 6);
         System.out.println(result);
         

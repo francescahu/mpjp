@@ -21,5 +21,8 @@ public class Arithmetic {
 
         System.out.println(c - 2.1); // 0.8999999999999999
         System.out.println(c / 0); // Infinity
+
+        
+        System.out.println(a & b);
     }
 }

@@ -8,6 +8,8 @@ public class Main {
         for (int i = 1; i < dogs.length; i++) {
             dogs[i] = new Dog();
         }
+        
+        dogs[2].ciaone();
 
         dogs[0].bark();
         dogs[dogs.length - 1].bark();

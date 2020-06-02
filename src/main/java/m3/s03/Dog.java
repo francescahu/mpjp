@@ -13,8 +13,14 @@ public class Dog {
         name = nm;
         System.out.println("A new dog named " + name + " has been created");
     }
+    
+    public Dog ciaone() {
+        System.out.println("No name");
+		return new Dog("no name");
+    }
 
     public void bark() {
         System.out.println(name + ": woof");
     }
+    
 }

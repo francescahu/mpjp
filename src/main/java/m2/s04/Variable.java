@@ -18,5 +18,6 @@ public class Variable {
 
         System.out.println(bName);
         System.out.println(bValue);
+        
     }
 }

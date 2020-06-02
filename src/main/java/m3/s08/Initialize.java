@@ -2,7 +2,7 @@ package m3.s08;
 
 public class Initialize {
     private int i; // 0
-    private boolean flag; // false
+    private boolean flag; // false se non inizializzo
     private String t; // null
 
     public void f() {
@@ -20,4 +20,11 @@ public class Initialize {
     public void g() {
         System.out.println(t + ", " + i + ", " + flag);
     }
+    
+    public static void main(String[] args) {
+		Dog dog  = new Dog();
+		
+		dog.setNome("ciaone");
+		System.out.println(dog.getNome());
+	}
 }

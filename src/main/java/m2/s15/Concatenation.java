@@ -10,6 +10,8 @@ public class Concatenation {
         System.out.println(true + " or " + false);
 
         System.out.println("Vogons".repeat(3)); // Java 11
+        
+        f("ciao", 2, "b");
     }
     
     static void f(String a, int b, String c) {
