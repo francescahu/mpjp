@@ -32,6 +32,14 @@ public class S05 {
 				pal = false;
 		}
 		return pal;
+		
+//		StringBuilder res = new StringBuilder("");
+//		
+//		for (int i = s.length() - 1; i >= 0; i--) {
+//			res.append(s.charAt(i));
+//		}
+//
+//		return res.toString();
 	}
 
 	/**
@@ -45,7 +53,8 @@ public class S05 {
 		
 		for(int i = 0; i < s.length(); i++) {
 			char c = s.charAt(i);
-			if(c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u');
+			if(c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u'
+					||  c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U');
 			else {
 				res.append(c);
 			}

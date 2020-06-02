@@ -1,6 +1,12 @@
 package m2ex;
 
 public class S08 {
+	
+	public static void main(String[] args) {
+		int values[] = {1,4,2,3,3,2,1};
+		
+		getSingle(values);
+	}
 	/**
 	 * Binary addition on strings
 	 * 
@@ -15,7 +21,49 @@ public class S08 {
 	 * @throws IllegalArgumentException different sizes
 	 */
 	public static String binarySum(String left, String right) {
-		throw new UnsupportedOperationException("Not yet implemented");
+		//throw new UnsupportedOperationException("Not yet implemented");
+		String res = null;
+		boolean resto = false;
+		
+		if(left.length() != right.length())
+			throw new IllegalArgumentException("left and right have different sizes");
+		
+		for(int i = left.length(); i > 0; i--) {
+			if(left.charAt(i) == '0' && right.charAt(i) == '0') {
+				if(!resto)
+					res += "0";
+				else
+					res += "1";
+				resto = false;
+			}else if(left.charAt(i) == '1' && right.charAt(i) == '1') {
+				if(!resto) {
+					res += "0";
+					resto = true;
+				}else {
+					res += "1";
+					resto = false;
+				}
+				
+			}else { //0 1 o 1 0
+				//((left.charAt(i) == '1' && right.charAt(i) == '0') || 
+				//(left.charAt(i) == '0' && right.charAt(i) == '0'))
+				if(!resto) {
+					res += "1";
+					resto = false;
+				}else {
+					res += "0";
+					resto = true;
+				}
+			}
+				
+		}
+		
+		if(resto)
+			res += "1";
+		
+		S05.reverse(res);
+		
+		return res;
 	}
 
 	/**
@@ -46,7 +94,28 @@ public class S08 {
 	 * @return the only single value
 	 */
 	public static int getSingle(int[] values) {
-		throw new UnsupportedOperationException("Not yet implemented");
+		int res = 0, count = 0;
+		
+		
+		for(int i = 0; i < values.length; i++) {
+			res = values[i];
+			count = 0;
+			for(int j = i + 1; j < values.length; j++) {
+				
+				if(res != values[j]) {
+					if(count == 0 && j == values.length-1) {
+						res = values[i];
+						return res; //break
+					}
+				}else {
+					count++;
+					continue;
+				}
+			}
+			
+		}
+		
+		return res;
 	}
 
 	/**
