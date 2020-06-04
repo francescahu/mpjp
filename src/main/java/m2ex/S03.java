@@ -1,6 +1,22 @@
 package m2ex;
 
+import java.util.Arrays;
+
 public class S03 {
+	
+	public static void main(String[] args) {
+		if(args.length != 3) {
+			System.out.println("Expected 3 parameters!");
+			return;
+		}
+		
+		int a = Integer.valueOf(args[0]);
+		int b = Integer.valueOf(args[1]);
+		int c = Integer.valueOf(args[2]);
+		System.out.println(Arrays.toString(sort(a, b, c)));
+		
+	}
+	
 	/**
 	 * Check if the parameter is positive, negative, or zero
 	 * 
