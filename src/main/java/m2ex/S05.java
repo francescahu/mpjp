@@ -1,6 +1,11 @@
 package m2ex;
 
 public class S05 {
+	
+	public static void main(String[] args) {
+		String prova = reverse("ciao");
+		System.out.println(prova);
+	}
 	/**
 	 * Reverse a string
 	 * 

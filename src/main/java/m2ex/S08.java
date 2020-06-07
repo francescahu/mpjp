@@ -1,11 +1,34 @@
 package m2ex;
 
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
+
 public class S08 {
 	
 	public static void main(String[] args) {
-		int values[] = {1,4,2,3,3,2,1};
 		
-		getSingle(values);
+//		System.out.println(binarySum("101", "110"));
+		
+		int left[] = {1,2,4,6,7};
+		int right[] = {3,4,4,6};
+		System.out.println(mergeSorted(left, right));
+		
+//		int values[] = {1,4,4,5,6,2,3,3,2,1,5};
+//		System.out.println(getSingle(values));
+		
+//		int left[] = {1,2,4,6,7};
+//		int right[] = {3,4,4,6};
+//		
+//		mergeSorted(left, right);
+		
+
+		
+//		System.out.println(hasOnlyUnique("hellol"));
+//		System.out.println(isAnagram("ciaooo", "oiacco"));
+		
+		
 	}
 	/**
 	 * Binary addition on strings
@@ -21,26 +44,26 @@ public class S08 {
 	 * @throws IllegalArgumentException different sizes
 	 */
 	public static String binarySum(String left, String right) {
-		//throw new UnsupportedOperationException("Not yet implemented");
-		String res = null;
-		boolean resto = false;
-		
 		if(left.length() != right.length())
 			throw new IllegalArgumentException("left and right have different sizes");
 		
-		for(int i = left.length(); i > 0; i--) {
+		String res = "";
+		boolean resto = false;
+		
+		for(int i = left.length()-1; i >= 0; i--) {
 			if(left.charAt(i) == '0' && right.charAt(i) == '0') {
-				if(!resto)
+				if(!resto) {
 					res += "0";
-				else
+				}else {
 					res += "1";
+				}
 				resto = false;
 			}else if(left.charAt(i) == '1' && right.charAt(i) == '1') {
 				if(!resto) {
 					res += "0";
 					resto = true;
 				}else {
-					res += "1";
+					res += "11";
 					resto = false;
 				}
 				
@@ -49,11 +72,10 @@ public class S08 {
 				//(left.charAt(i) == '0' && right.charAt(i) == '0'))
 				if(!resto) {
 					res += "1";
-					resto = false;
 				}else {
-					res += "0";
-					resto = true;
+					res += "01";
 				}
+				resto = false;
 			}
 				
 		}
@@ -61,7 +83,7 @@ public class S08 {
 		if(resto)
 			res += "1";
 		
-		S05.reverse(res);
+		res = S05.reverse(res);
 		
 		return res;
 	}
@@ -79,7 +101,42 @@ public class S08 {
 	 * @return a merge of the two input parameters
 	 */
 	public static int[] mergeSorted(int[] left, int[] right) {
-		throw new UnsupportedOperationException("Not yet implemented");
+//		throw new UnsupportedOperationException("Not yet implemented");
+		int[] res = new int[left.length + right.length];
+		int i = 0, j = 0, k = 0;
+	
+		while(i < left.length && j < right.length) {
+			if(left[i] < right[j]) {
+				res[k] = left[i];
+				i++;
+				k++;
+			}else if(right[j] < left[i]) {
+				res[k] = right[j];
+				j++;
+				k++;
+			}else { //==
+				res[k] = left[i];
+				res[k+1] = right[j];
+				i++;
+				j++;
+				k += 2;
+			}
+		}
+		
+		while(i < left.length) {
+			res[i+j] = left[i];
+			i++;
+		}
+		while(j < right.length) {
+			res[i+j] = right[j];
+			j++;
+		}
+		
+		for(int z = 0; z < res.length; z++) {
+			System.out.print(res[z]);
+		}
+		
+		return res;
 	}
 
 	/**
@@ -94,27 +151,19 @@ public class S08 {
 	 * @return the only single value
 	 */
 	public static int getSingle(int[] values) {
-		int res = 0, count = 0;
-		
+		int count[] = new int[9];
+		int res = -1;
 		
 		for(int i = 0; i < values.length; i++) {
-			res = values[i];
-			count = 0;
-			for(int j = i + 1; j < values.length; j++) {
-				
-				if(res != values[j]) {
-					if(count == 0 && j == values.length-1) {
-						res = values[i];
-						return res; //break
-					}
-				}else {
-					count++;
-					continue;
-				}
-			}
-			
+			count[values[i]]++; //conto occorrenze dei numeri da 1 a 9 presenti in values
 		}
 		
+		for(int i = 0; i < count.length; i++) {
+			if(count[i] == 1) {
+				res = i;
+			}
+		}
+
 		return res;
 	}
 
@@ -130,7 +179,17 @@ public class S08 {
 	 * @return true if no duplicates in
 	 */
 	public static boolean hasOnlyUnique(String s) {
-		throw new UnsupportedOperationException("Not yet implemented");
+		Set<Character> chars = new HashSet<Character>();
+		boolean res = false;
+		
+		for(int i = 0; i < s.length(); i++) {
+			chars.add(s.charAt(i));
+		}
+		
+		if(chars.size() == s.length())
+			res = true;			
+		
+		return res;
 	}
 
 	/**
@@ -141,6 +200,32 @@ public class S08 {
 	 * @return true if s is an anagram of t
 	 */
 	public static boolean isAnagram(String s, String t) {
-		throw new UnsupportedOperationException("Not yet implemented");
+		if(s.length() != t.length()) {
+			throw new UnsupportedOperationException("Different lengths");
+		}
+		boolean res = false;
+		
+		Map<Character, Integer> charsS = new TreeMap<Character, Integer>();
+		Map<Character, Integer> charsT = new TreeMap<Character, Integer>();
+		for(int i = 0; i < s.length(); i++) {
+			if(charsS.containsKey(s.charAt(i))) {
+				charsS.put(s.charAt(i), charsS.get(s.charAt(i))+1);
+			}else {
+				charsS.put(s.charAt(i), 1);
+			}
+		}
+	
+		for(int i = 0; i < t.length(); i++) {
+			if(charsT.containsKey(t.charAt(i))) {
+				charsT.put(t.charAt(i), charsT.get(t.charAt(i))+1);
+			}else {
+				charsT.put(t.charAt(i), 1);
+			}
+		}
+		
+		if(charsS.equals(charsT))
+			res = true;
+		
+		return res;
 	}
 }
