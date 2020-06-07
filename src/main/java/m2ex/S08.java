@@ -11,9 +11,9 @@ public class S08 {
 		
 //		System.out.println(binarySum("101", "110"));
 		
-		int left[] = {1,2,4,6,7};
-		int right[] = {3,4,4,6};
-		System.out.println(mergeSorted(left, right));
+//		int left[] = {1,2,4,6,7};
+//		int right[] = {3,4,4,6};
+//		System.out.println(mergeSorted(left, right));
 		
 //		int values[] = {1,4,4,5,6,2,3,3,2,1,5};
 //		System.out.println(getSingle(values));
@@ -26,7 +26,7 @@ public class S08 {
 
 		
 //		System.out.println(hasOnlyUnique("hellol"));
-//		System.out.println(isAnagram("ciaooo", "oiacco"));
+//		System.out.println(isAnagram("abba", "bab"));
 		
 		
 	}
@@ -63,8 +63,12 @@ public class S08 {
 					res += "0";
 					resto = true;
 				}else {
-					res += "11";
-					resto = false;
+					if(i == 0) {
+						res += "11";
+						resto = false;
+					}else {
+						res += "1"; //resto = true
+					}
 				}
 				
 			}else { //0 1 o 1 0
@@ -73,9 +77,15 @@ public class S08 {
 				if(!resto) {
 					res += "1";
 				}else {
-					res += "01";
+					if(i == 0) {
+						res += "01";
+						resto = false;
+					}else {
+						res += "1";
+						resto = true;
+					}
 				}
-				resto = false;
+				
 			}
 				
 		}
@@ -201,7 +211,7 @@ public class S08 {
 	 */
 	public static boolean isAnagram(String s, String t) {
 		if(s.length() != t.length()) {
-			throw new UnsupportedOperationException("Different lengths");
+			throw new IllegalArgumentException("Different lengths");
 		}
 		boolean res = false;
 		
