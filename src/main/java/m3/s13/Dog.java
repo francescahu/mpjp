@@ -1,6 +1,9 @@
 package m3.s13;
 
 public class Dog implements BarkAndWag {
+	
+	private int dogWS = BarkAndWag.AVG_WAGGING_SPEED * 3; //WS = WaggingSpees
+	
     @Override
     public String bark() {
         return "woof!";
