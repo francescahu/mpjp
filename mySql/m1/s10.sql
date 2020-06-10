@@ -33,4 +33,7 @@ from countries;
 
 -- limit to get result set with a specified size
 select first_name, last_name
-from employees limit 1;
+from employees limit 1, 10;
+
+select first_name, last_name
+from employees limit 11, 2;

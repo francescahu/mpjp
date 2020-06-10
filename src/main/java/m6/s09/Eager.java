@@ -13,4 +13,14 @@ public class Eager {
     public int solution() {
         return 42;
     }
+    
+}
+
+class X{
+	public static void main(String[] args) {
+    	Eager eager = Eager.getInstance();
+    	System.out.println(eager.solution());
+    	
+    	Eager e2 = Eager.getInstance(); //Pattern Singleton
+    }
 }

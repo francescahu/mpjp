@@ -4,7 +4,7 @@ use me;
 
 -- cleanup
 drop table if exists job_history;
-alter table departments drop foreign key departments_manager_fk;
+alter table departments drop foreign key departments_manager_fk; -- TODO solo la prima volta da commentare
 drop table if exists employees;
 drop table if exists departments;
 drop table if exists locations;

@@ -24,14 +24,12 @@ class S05Test {
 	@Test
 	void removeVowelsPlain() {
 		String actual = S05.removeVowels("example");
-
 		assertThat(actual, is("xmpl"));
 	}
 
 	@Test
 	void bin2decPlain() {
 		int actual = S05.bin2dec("1001");
-
 		assertThat(actual, is(9));
 	}
 

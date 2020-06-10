@@ -2,7 +2,7 @@ package m3.s20;
 
 public class Main {
     public static void main(String[] args) {
-//		Cat cat = (Cat) new Dog();
+//		Cat cat = (Cat) new Dog(); sidecast
 
         Pet pet = new Dog("Bob");
 

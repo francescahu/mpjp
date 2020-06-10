@@ -7,3 +7,12 @@ public enum EnumEager {
         return 42;
     }
 }
+
+class X2 {
+	public static void main(String[] args) {
+		EnumEager ee = EnumEager.INSTANCE;
+		
+		ee.solution(); 
+		//EnumEager.INSTANCE.solution();
+	}
+}

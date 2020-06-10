@@ -65,15 +65,20 @@ class MyIntQueueException extends Exception {
 
 class MyIntQueue {
     // TODO instance variables?
+	Node head;
+	Node tail; //non necessario
 
     public MyIntQueue() {
-        // TODO
+    	this.head = null;
     }
 
     public void add(int value) {
-        // TODO
+        Node node = new Node(value);
+        head = node; //funziona solo se la coda è vuota
     }
 
+    //Rimuovo un elemento dalla coda, se è vuota -> eccezione
+    //Viene ritornata la head perche tail viene rimossa
     public int remove() throws MyIntQueueException {
         // TODO
         throw new UnsupportedOperationException("Not yet implemented");

@@ -7,3 +7,7 @@ create user me identified by 'password';
 create schema me;
 grant all privileges on me.* to me;
 grant alter routine on me.* to me;
+
+use me;
+
+show schemas;

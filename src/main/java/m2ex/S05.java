@@ -3,8 +3,10 @@ package m2ex;
 public class S05 {
 	
 	public static void main(String[] args) {
-		String prova = reverse("ciao");
-		System.out.println(prova);
+//		String prova = reverse("ciao");
+//		System.out.println(prova);
+		
+		System.out.println(isPalindrome("anna"));
 	}
 	/**
 	 * Reverse a string
@@ -28,15 +30,25 @@ public class S05 {
 	 * @param s
 	 * @return true if the parameter is a palindrome
 	 */
-	public static boolean isPalindrome(String s) {
-		String contrario = reverse(s);
-		boolean pal = true;
+	public static boolean isPalindrome(String s) {	
+		System.out.print(s.length()/2);
 		
-		for(int i = 0; i < s.length(); i++) {
-			if(!s.equals(contrario))
-				pal = false;
-		}
-		return pal;
+		String meta1 = s.substring(0, s.length()/2);
+		String meta2 = s.substring(s.length()/2, s.length());
+		
+		return meta1.equals(S05.reverse(meta2));
+		
+//		//Mia sol
+//		String contrario = reverse(s);
+//		boolean pal = true;
+//		
+//		for(int i = 0; i < s.length(); i++) {
+//			if(!s.equals(contrario))
+//				pal = false;
+//		}
+//		return pal;
+		
+
 		
 //		StringBuilder res = new StringBuilder("");
 //		
@@ -78,6 +90,10 @@ public class S05 {
 		// [1][0][0][0][1]
 	    // 43_210
 	    // 2
+		if(s == null || s.isEmpty()) {
+			throw new IllegalArgumentException("s input parameters");
+		}
+		
 		int res = 0;
 		
 		for(int i = 0; i < s.length(); i++) {
@@ -87,6 +103,22 @@ public class S05 {
 		}
 		
 		return res;
+		
+//		//SOL Zambo
+//		String bin = s.replaceAll("[^0|1]", "");
+//		if(bin.isBlank()) {
+//			throw new IllegalArgumentException("Invalid String");
+//		}
+//		
+//		int exp = 0, sum = 0;
+//		for(int i = bin.length()-1; i >= 0; i--) {
+//			if(bin.charAt(i) == '1') {
+//				sum += Math.pow(2, exp);
+//			}
+//			exp++;
+//		}
+//		
+//		return sum;
 	}
 
 	/**
@@ -129,12 +161,19 @@ public class S05 {
 	 * @return the largest value
 	 */
 	public static int max(int[] data) {
-		int max = data[0];
+//		int max = data[0];
+//		
+//		for(int i = 0; i < data.length; i++) {
+//			if(data[i] > max)
+//				max = data[i];
+//		}
+//		return max;
 		
-		for(int i = 0; i < data.length; i++) {
-			if(data[i] > max)
-				max = data[i];
+		//Altra sol
+		int result = Integer.MIN_VALUE;
+		for(int current : data) {
+			result = (current > result) ? current : result;
 		}
-		return max;
+		return result;
 	}
 }

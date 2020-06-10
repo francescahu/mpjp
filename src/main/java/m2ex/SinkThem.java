@@ -203,19 +203,20 @@ public class SinkThem {
         // TODO: use Scanner instead
 //        shootAll(st);
         while(!st.done()) {
-        	System.out.println("Insert x: ");
+        	System.out.println("Insert row: ");
         	
         	int x = -1, y = -1;
-        	if(scanner.hasNextInt()) {
-        		x = scanner.nextInt();
-        	}
-        	
-        	System.out.println("Insert y: ");
         	if(scanner.hasNextInt()) {
         		y = scanner.nextInt();
         	}
         	
-        	st.shoot(x, y);
+        	System.out.println("Insert col: ");
+        	if(scanner.hasNextInt()) {
+        		x = scanner.nextInt();
+        	}
+        	
+        	st.shoot(y, x);
+        	st.getBoard();
         }
         
         scanner.close();
