@@ -2,7 +2,7 @@
 use me;
 
 -- a) subquery in where:
--- employees having Chen as manager
+-- Chen manager's name
 -- !!! risky !!!
 select first_name, last_name
 from employees
