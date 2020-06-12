@@ -9,7 +9,7 @@ delimiter //
 create procedure hello()
 begin
 	select "Hello!" as greetings;
-end;
+end;hello
 
 // delimiter ;
 
