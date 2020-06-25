@@ -1,19 +1,19 @@
 package m2ex;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.is;
-import static org.junit.jupiter.api.Assertions.*;
+//import static org.hamcrest.MatcherAssert.assertThat;
+//import static org.hamcrest.Matchers.is;
+//import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Random;
 
 import org.junit.jupiter.api.Test;
 
-class SinkThem {
+class SinkThemTest {
 	
 	@Test
 	void test() {
 		Random r = new Random();
-		SinkThem st = new SinkThem();
+		SinkThem st = new SinkThem(r.nextInt());
 		
 		
 		
